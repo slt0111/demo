@@ -14,6 +14,8 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
+
+    //Filter工厂，设置对应的过滤条件和跳转条件
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -42,6 +44,8 @@ public class ShiroConfig {
 
     }
 
+
+    //权限管理，配置主要是Realm的管理认证
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager defaultSecurityManager = new DefaultWebSecurityManager();
@@ -49,6 +53,7 @@ public class ShiroConfig {
         return defaultSecurityManager;
     }
 
+    //将自己的验证方式加入容器
     @Bean
     public UserRealm userRealm() {
         UserRealm userRealm = new UserRealm();

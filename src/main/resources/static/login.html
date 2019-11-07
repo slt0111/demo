@@ -13,6 +13,7 @@
 </head>
 <body>
 <form method="post" action="/login">
+
     <div class="box">
         <div class="box-body">
                 <div class="layui-card">
@@ -40,7 +41,8 @@
                             <input type="submit" class="button" value="Sign In">
                         </div>
                     </div>
-
+                    <!--判断-->
+                    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
                 </div>
 
 
@@ -81,6 +83,12 @@
             if (ev.target.value.trim() === '') {
                 classie.remove(ev.target.parentNode, 'input--filled');
             }
+        }
+
+        function alertmsg(){
+            var msg = ${'#msg'}.value;
+            alert(msg);
+
         }
     })();
 </script>
